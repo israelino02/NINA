@@ -126,7 +126,12 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.1
 .nav a::after{content:'';position:absolute;left:0;bottom:0;height:1.5px;width:0;background:var(--gold-500);transition:width .3s var(--ease)}
 .nav a:hover{color:var(--green-800)}
 .nav a:hover::after{width:100%}
-.nav .nav-cta{color:#231703}
+/* .nav a (0,1,1) vencia .btn (0,1,0) e zerava o padding do botão:
+   o texto ficava colado na borda da pílula */
+.nav a.nav-cta{
+  padding:13px 24px;font-size:14.5px;font-weight:600;
+  color:#231703;flex-shrink:0;
+}
 .nav .nav-cta::after{display:none}
 
 .nav-backdrop{position:fixed;inset:0;z-index:99;background:rgba(7,36,28,.55);opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
@@ -288,25 +293,39 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.1
 
 .reels-wrap{position:relative}
 .reels{
+  --reel-w:clamp(206px,21vw,254px);
   display:flex;gap:18px;overflow-x:auto;overscroll-behavior-x:contain;
-  scroll-snap-type:x proximity;scroll-behavior:smooth;
-  padding:6px max(24px,calc((100% - 1200px) / 2 + 24px)) 22px;
-  /* sem isso o scroll-snap encosta o 1º card na borda e come o padding */
-  scroll-padding-inline:max(24px,calc((100% - 1200px) / 2 + 24px));
+  scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  /* o padding lateral coloca o primeiro e o último card no meio da tela */
+  padding:8px calc(50% - var(--reel-w) / 2) 24px;
   scrollbar-width:none;-ms-overflow-style:none;
 }
 .reels::-webkit-scrollbar{display:none}
 
 .reel{
-  flex:0 0 clamp(206px,21vw,254px);scroll-snap-align:start;
+  flex:0 0 var(--reel-w);scroll-snap-align:center;
   position:relative;aspect-ratio:9 / 16;padding:0;
   border-radius:var(--r);overflow:hidden;background:var(--green-950);
   box-shadow:var(--shadow);
-  transition:transform .45s var(--ease),box-shadow .45s var(--ease);
+  transform:scale(var(--esc,1));
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease);
+}
+
+/* vidro: some no card do meio e cobre os das laterais,
+   o JS controla --vidro conforme a distância até o centro */
+.reel::before{
+  content:'';position:absolute;inset:0;z-index:3;pointer-events:none;
+  border-radius:inherit;
+  background:linear-gradient(155deg,rgba(240,220,169,.10),rgba(7,36,28,.55));
+  -webkit-backdrop-filter:blur(5px) saturate(.85);
+  backdrop-filter:blur(5px) saturate(.85);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.09);
+  opacity:var(--vidro,0);
+  transition:opacity .5s var(--ease);
 }
 .reel img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
 .reel::after{content:'';position:absolute;inset:auto 0 0 0;height:58%;background:linear-gradient(to top,rgba(7,36,28,.94),rgba(7,36,28,.55) 42%,transparent);pointer-events:none}
-.reel:hover,.reel:focus-visible{transform:translateY(-7px);box-shadow:var(--shadow-lg)}
+.reel:hover,.reel:focus-visible{transform:scale(var(--esc,1)) translateY(-7px);box-shadow:var(--shadow-lg)}
 .reel:hover img{transform:scale(1.07)}
 
 .reel-play{
@@ -455,7 +474,7 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.1
   .nav.open{transform:none}
   .nav a{width:100%;font-size:17px;padding:13px 0;border-bottom:1px solid var(--line)}
   .nav a::after{display:none}
-  .nav .nav-cta{margin-top:18px;border-bottom:none;justify-content:center}
+  .nav a.nav-cta{margin-top:18px;padding:15px 24px;font-size:15.5px;border-bottom:none;justify-content:center}
   .burger{display:flex}
 }
 
@@ -544,8 +563,7 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.1
   .gal-big{grid-column:span 2;grid-row:span 2}
 
   /* depoimentos seguem em esteira */
-  .reel{flex-basis:clamp(190px,64vw,230px)}
-  .reels{scroll-snap-type:x mandatory}
+  .reels{--reel-w:clamp(190px,66vw,230px)}
 
   /* dúvidas, CTA e rodapé */
   .faq-in{gap:30px}

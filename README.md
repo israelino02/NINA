@@ -10,7 +10,7 @@ site/
 ├── script.js       -> menu, animações, carrossel, player, galeria
 └── assets/
     ├── img/        -> logo, foto da Dra. Noemi, fotos da clínica, capas dos vídeos
-    └── video/      -> 6 depoimentos em vídeo (~54 MB no total)
+    └── video/      -> 9 depoimentos em vídeo (~88 MB no total)
 ```
 
 ## Como testar localmente
@@ -39,8 +39,13 @@ Busque por essa palavra no `index.html` para achar cada um.
 
 ## Depoimentos em vídeo
 
-São 6 vídeos, os mesmos criativos que já rodam no Meta Ads. Ficam em `assets/video/`,
+São 9 vídeos, os mesmos criativos que já rodam no Meta Ads. Ficam em `assets/video/`,
 com as capas (posters) em `assets/img/poster-*.jpg`.
+
+O carrossel é infinito: o JavaScript clona o conjunto de cards antes e depois, e
+salta a rolagem a largura de um bloco quando a pessoa passa do limite. Como os três
+blocos são idênticos, o salto não aparece, e não existe começo nem fim visível.
+O card que está no meio fica limpo; os das laterais ficam atrás de uma camada de vidro.
 
 Nada de vídeo é baixado quando a página abre, só a capa, que tem ~50 KB.
 O arquivo só começa a carregar quando a pessoa clica em play, e abre num player sobreposto.
@@ -53,6 +58,9 @@ O arquivo só começa a carregar quando a pessoa clica em play, e abre num playe
 | `depo-lombar-1.mp4`, dor na lombar | 1:13 | 13,1 MB |
 | `depo-carla.mp4`, Carla | 0:54 | 9,0 MB |
 | `depo-lombar-2.mp4`, dor na lombar | 0:30 | 4,9 MB |
+| `depo-bursite.mp4`, bursite no quadril | 1:01 | 10,8 MB |
+| `depo-paciente-1.mp4`, depoimento de paciente | 0:59 | 10,7 MB |
+| `depo-paciente-2.mp4`, paciente e acompanhante | 1:12 | 12,9 MB |
 
 O da Andreia veio do Drive com 44 MB (1080×1920, master de edição) e foi recomprimido
 para 720×1280, mesma qualidade na tela, três vezes mais leve. Os outros já vinham
@@ -65,6 +73,10 @@ prontos do Instagram e foram usados como estavam.
    `data-titulo`, `data-sub`, o `src` da capa, o `alt` e a duração em `.reel-time`.
 
 Peça sempre autorização de uso de imagem à paciente antes de publicar.
+
+Dois dos vídeos ainda estão com legenda genérica ("Depoimento / Paciente da clínica"),
+porque não há nada escrito na tela nem no nome do arquivo que diga a queixa. Procure por
+`SUBSTITUIR` no `index.html` para achar os dois e trocar por nome e queixa reais.
 
 ### Sugestões de melhoria depois do lançamento
 - Trocar as fotos da clínica por versões em alta resolução (as atuais têm 560×386px, foram extraídas do site antigo).

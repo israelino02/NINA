@@ -134,23 +134,96 @@
     var rPrev = document.getElementById('reelPrev');
     var rNext = document.getElementById('reelNext');
 
+    var originais = Array.prototype.slice.call(reels.querySelectorAll('.reel'));
+    var qtd = originais.length;
+
+    /* ── laço infinito ──
+       clona o conjunto inteiro antes e depois. A pessoa navega sempre pelo bloco
+       do meio; quando ela passa do limite, o scroll salta a largura de um bloco.
+       Como o conteúdo dos três blocos é idêntico, o salto não aparece na tela. */
+    var antes = document.createDocumentFragment();
+    var depois = document.createDocumentFragment();
+    originais.forEach(function (card) {
+      [antes, depois].forEach(function (destino) {
+        var copia = card.cloneNode(true);
+        copia.setAttribute('aria-hidden', 'true');
+        copia.setAttribute('tabindex', '-1');
+        copia.dataset.copia = '1';
+        destino.appendChild(copia);
+      });
+    });
+    reels.insertBefore(antes, reels.firstChild);
+    reels.appendChild(depois);
+
+    var reelCards = Array.prototype.slice.call(reels.querySelectorAll('.reel'));
+    var bloco = 0;   // largura de um conjunto completo
+
     function step() {
-      var card = reels.querySelector('.reel');
+      var card = reelCards[0];
       if (!card) return 260;
       return card.getBoundingClientRect().width + 18;
     }
 
-    function syncNav() {
-      var max = reels.scrollWidth - reels.clientWidth - 4;
-      rPrev.disabled = reels.scrollLeft <= 4;
-      rNext.disabled = reels.scrollLeft >= max;
+    function semSuavizar(fn) {
+      var antesDisso = reels.style.scrollBehavior;
+      reels.style.scrollBehavior = 'auto';
+      fn();
+      reels.offsetHeight;
+      reels.style.scrollBehavior = antesDisso;
     }
 
-    rPrev.addEventListener('click', function () { reels.scrollBy({ left: -step() * 2, behavior: 'smooth' }); });
-    rNext.addEventListener('click', function () { reels.scrollBy({ left: step() * 2, behavior: 'smooth' }); });
-    reels.addEventListener('scroll', syncNav, { passive: true });
-    window.addEventListener('resize', syncNav);
-    syncNav();
+    function medir() {
+      bloco = reelCards[qtd].offsetLeft - reelCards[0].offsetLeft;
+      if (bloco > 0 && (reels.scrollLeft < bloco * 0.5 || reels.scrollLeft > bloco * 1.5)) {
+        semSuavizar(function () { reels.scrollLeft = bloco; });
+      }
+    }
+
+    function normalizar() {
+      if (!bloco) return;
+      if (reels.scrollLeft < bloco * 0.5) {
+        semSuavizar(function () { reels.scrollLeft += bloco; });
+      } else if (reels.scrollLeft > bloco * 1.5) {
+        semSuavizar(function () { reels.scrollLeft -= bloco; });
+      }
+    }
+
+    /* o card que está no meio fica limpo; os das laterais ficam atrás do vidro */
+    function vidro() {
+      var caixa = reels.getBoundingClientRect();
+      var centro = caixa.left + caixa.width / 2;
+      reelCards.forEach(function (card) {
+        var r = card.getBoundingClientRect();
+        if (r.right < caixa.left - r.width || r.left > caixa.right + r.width) return;
+        var dist = Math.abs(r.left + r.width / 2 - centro);
+        var t = Math.min(1, dist / (r.width * 1.15));
+        card.style.setProperty('--vidro', (t * t).toFixed(3));
+        card.style.setProperty('--esc', (1 - 0.07 * t).toFixed(3));
+      });
+    }
+
+    var pendente = false;
+    function aoRolar() {
+      normalizar();
+      if (pendente) return;
+      pendente = true;
+      requestAnimationFrame(function () { pendente = false; vidro(); });
+    }
+
+    function andar(dir) {
+      normalizar();
+      reels.scrollBy({ left: dir * step(), behavior: 'smooth' });
+    }
+
+    rPrev.addEventListener('click', function () { andar(-1); });
+    rNext.addEventListener('click', function () { andar(1); });
+    reels.addEventListener('scroll', aoRolar, { passive: true });
+    window.addEventListener('resize', function () { medir(); vidro(); });
+    window.addEventListener('load', function () { medir(); vidro(); });
+
+    semSuavizar(function () { reels.scrollLeft = reelCards[qtd].offsetLeft - reelCards[0].offsetLeft; });
+    medir();
+    vidro();
 
     /* ── player em modal ── */
     var vmodal = document.getElementById('vmodal');
@@ -178,7 +251,7 @@
       if (vmLastFocus) vmLastFocus.focus({ preventScroll: true });
     }
 
-    reels.querySelectorAll('.reel').forEach(function (btn) {
+    reelCards.forEach(function (btn) {
       btn.addEventListener('click', function () { openVideo(btn); });
     });
 

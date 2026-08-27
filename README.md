@@ -47,6 +47,11 @@ salta a rolagem a largura de um bloco quando a pessoa passa do limite. Como os t
 blocos são idênticos, o salto não aparece, e não existe começo nem fim visível.
 O card que está no meio fica limpo; os das laterais ficam atrás de uma camada de vidro.
 
+A mesma esteira roda na galeria de fotos da clínica (a função `montaEsteira` no
+`script.js` serve as duas). A diferença é o parâmetro `limpos`: nos depoimentos 1 card
+fica sem vidro, na galeria 3. Os cards das esteiras não podem ter a classe `reveal`,
+senão as cópias nascem invisíveis, porque o observer de animação só enxerga os originais.
+
 Nada de vídeo é baixado quando a página abre, só a capa, que tem ~50 KB.
 O arquivo só começa a carregar quando a pessoa clica em play, e abre num player sobreposto.
 

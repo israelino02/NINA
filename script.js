@@ -128,19 +128,20 @@
     counters.forEach(runCounter);
   }
 
-  /* ── carrossel de depoimentos em vídeo ── */
-  var reels = document.getElementById('reels');
-  if (reels) {
-    var rPrev = document.getElementById('reelPrev');
-    var rNext = document.getElementById('reelNext');
+  /* ── esteira infinita, usada nos depoimentos e na galeria ──
+     clona o conjunto inteiro antes e depois. A pessoa navega sempre pelo bloco
+     do meio; quando passa do limite, a rolagem salta a largura de um bloco.
+     Como os três blocos são idênticos, o salto não aparece na tela. */
+  function montaEsteira(cfg) {
+    var trilho = cfg.trilho;
+    if (!trilho) return null;
 
-    var originais = Array.prototype.slice.call(reels.querySelectorAll('.reel'));
+    var gap = cfg.gap || 16;
+    var limpos = cfg.limpos || 1;   // quantos cards ficam sem vidro no meio
+    var originais = Array.prototype.slice.call(trilho.querySelectorAll(cfg.seletor));
     var qtd = originais.length;
+    if (!qtd) return null;
 
-    /* ── laço infinito ──
-       clona o conjunto inteiro antes e depois. A pessoa navega sempre pelo bloco
-       do meio; quando ela passa do limite, o scroll salta a largura de um bloco.
-       Como o conteúdo dos três blocos é idêntico, o salto não aparece na tela. */
     var antes = document.createDocumentFragment();
     var depois = document.createDocumentFragment();
     originais.forEach(function (card) {
@@ -152,51 +153,51 @@
         destino.appendChild(copia);
       });
     });
-    reels.insertBefore(antes, reels.firstChild);
-    reels.appendChild(depois);
+    trilho.insertBefore(antes, trilho.firstChild);
+    trilho.appendChild(depois);
 
-    var reelCards = Array.prototype.slice.call(reels.querySelectorAll('.reel'));
-    var bloco = 0;   // largura de um conjunto completo
+    var cards = Array.prototype.slice.call(trilho.querySelectorAll(cfg.seletor));
+    var bloco = 0;
 
-    function step() {
-      var card = reelCards[0];
-      if (!card) return 260;
-      return card.getBoundingClientRect().width + 18;
+    function passo() {
+      var c = cards[0];
+      return c ? c.getBoundingClientRect().width + gap : 260;
     }
 
     function semSuavizar(fn) {
-      var antesDisso = reels.style.scrollBehavior;
-      reels.style.scrollBehavior = 'auto';
+      var antesDisso = trilho.style.scrollBehavior;
+      trilho.style.scrollBehavior = 'auto';
       fn();
-      reels.offsetHeight;
-      reels.style.scrollBehavior = antesDisso;
+      trilho.offsetHeight;
+      trilho.style.scrollBehavior = antesDisso;
     }
 
     function medir() {
-      bloco = reelCards[qtd].offsetLeft - reelCards[0].offsetLeft;
-      if (bloco > 0 && (reels.scrollLeft < bloco * 0.5 || reels.scrollLeft > bloco * 1.5)) {
-        semSuavizar(function () { reels.scrollLeft = bloco; });
+      bloco = cards[qtd].offsetLeft - cards[0].offsetLeft;
+      if (bloco > 0 && (trilho.scrollLeft < bloco * 0.5 || trilho.scrollLeft > bloco * 1.5)) {
+        semSuavizar(function () { trilho.scrollLeft = bloco; });
       }
     }
 
     function normalizar() {
       if (!bloco) return;
-      if (reels.scrollLeft < bloco * 0.5) {
-        semSuavizar(function () { reels.scrollLeft += bloco; });
-      } else if (reels.scrollLeft > bloco * 1.5) {
-        semSuavizar(function () { reels.scrollLeft -= bloco; });
+      if (trilho.scrollLeft < bloco * 0.5) {
+        semSuavizar(function () { trilho.scrollLeft += bloco; });
+      } else if (trilho.scrollLeft > bloco * 1.5) {
+        semSuavizar(function () { trilho.scrollLeft -= bloco; });
       }
     }
 
-    /* o card que está no meio fica limpo; os das laterais ficam atrás do vidro */
     function vidro() {
-      var caixa = reels.getBoundingClientRect();
+      var caixa = trilho.getBoundingClientRect();
       var centro = caixa.left + caixa.width / 2;
-      reelCards.forEach(function (card) {
+      cards.forEach(function (card) {
         var r = card.getBoundingClientRect();
         if (r.right < caixa.left - r.width || r.left > caixa.right + r.width) return;
+        var passoCard = r.width + gap;
+        var livre = (limpos - 1) / 2 * passoCard + r.width * 0.35;
         var dist = Math.abs(r.left + r.width / 2 - centro);
-        var t = Math.min(1, dist / (r.width * 1.15));
+        var t = Math.min(1, Math.max(0, (dist - livre) / (passoCard * 0.85)));
         card.style.setProperty('--vidro', (t * t).toFixed(3));
         card.style.setProperty('--esc', (1 - 0.07 * t).toFixed(3));
       });
@@ -212,18 +213,34 @@
 
     function andar(dir) {
       normalizar();
-      reels.scrollBy({ left: dir * step(), behavior: 'smooth' });
+      trilho.scrollBy({ left: dir * passo(), behavior: 'smooth' });
     }
 
-    rPrev.addEventListener('click', function () { andar(-1); });
-    rNext.addEventListener('click', function () { andar(1); });
-    reels.addEventListener('scroll', aoRolar, { passive: true });
+    if (cfg.prev) cfg.prev.addEventListener('click', function () { andar(-1); });
+    if (cfg.next) cfg.next.addEventListener('click', function () { andar(1); });
+    trilho.addEventListener('scroll', aoRolar, { passive: true });
     window.addEventListener('resize', function () { medir(); vidro(); });
     window.addEventListener('load', function () { medir(); vidro(); });
 
-    semSuavizar(function () { reels.scrollLeft = reelCards[qtd].offsetLeft - reelCards[0].offsetLeft; });
+    semSuavizar(function () { trilho.scrollLeft = cards[qtd].offsetLeft - cards[0].offsetLeft; });
     medir();
     vidro();
+
+    return { cards: cards };
+  }
+
+  /* ── depoimentos em vídeo ── */
+  var reels = document.getElementById('reels');
+  if (reels) {
+    var esteiraReels = montaEsteira({
+      trilho: reels,
+      seletor: '.reel',
+      gap: 18,
+      limpos: 1,
+      prev: document.getElementById('reelPrev'),
+      next: document.getElementById('reelNext')
+    });
+    var reelCards = esteiraReels ? esteiraReels.cards : [];
 
     /* ── player em modal ── */
     var vmodal = document.getElementById('vmodal');
@@ -339,7 +356,22 @@
     if (lastFocus) lastFocus.focus({ preventScroll: true });
   }
 
-  document.querySelectorAll('.gal-item').forEach(function (item) {
+  /* a galeria também é esteira infinita, com 3 fotos limpas no meio */
+  var galeria = document.getElementById('galeria');
+  var esteiraGaleria = galeria && montaEsteira({
+    trilho: galeria,
+    seletor: '.gal-item',
+    gap: 16,
+    limpos: 3,
+    prev: document.getElementById('galPrev'),
+    next: document.getElementById('galNext')
+  });
+
+  var fotos = esteiraGaleria
+    ? esteiraGaleria.cards
+    : Array.prototype.slice.call(document.querySelectorAll('.gal-item'));
+
+  fotos.forEach(function (item) {
     item.addEventListener('click', function () {
       var img = item.querySelector('img');
       openLb(item.getAttribute('data-src'), img ? img.alt : '');

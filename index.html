@@ -24,7 +24,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=11">
+<link rel="stylesheet" href="styles.css?v=12">
 <script>document.documentElement.className+=" js";</script>
 
 <script type="application/ld+json">
@@ -109,13 +109,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
 
     <nav class="nav" id="nav" aria-label="Navegação principal">
-      <a href="#sobre">Sobre</a>
+      <a href="#depoimentos">Depoimentos</a>
       <a href="#tratamentos">Tratamentos</a>
       <a href="#metodo">Como funciona</a>
       <a href="#estrutura">Estrutura</a>
-      <a href="#depoimentos">Depoimentos</a>
+      <a href="#sobre">Sobre</a>
       <a href="#duvidas">Dúvidas</a>
-      <a href="#contato">Contato</a>
+      <a href="#agende">Contato</a>
       <a class="btn btn-gold nav-cta" href="https://wa.me/5551981324435?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar avaliação</a>
     </nav>
 
@@ -190,45 +190,81 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<!-- ══ SOBRE ══ -->
-<section class="section sobre" id="sobre">
-  <div class="wrap sobre-in">
-    <div class="sobre-media reveal">
-      <div class="sobre-photo">
-        <img src="assets/img/dra-noemi.png" alt="Dra. Noemi, fisioterapeuta da Nina Fisioterapia, segurando um modelo anatômico da coluna" width="720" height="782">
-      </div>
-      <div class="sobre-stamp">
-        <span class="stamp-num" data-count="7">0</span>
-        <span class="stamp-lbl">tratamentos<br>especializados</span>
-      </div>
+<!-- ══ DEPOIMENTOS ══ -->
+<section class="section depo" id="depoimentos">
+  <div class="wrap">
+    <header class="sec-head">
+      <p class="eyebrow reveal">Depoimentos em vídeo</p>
+      <h2 class="reveal d1">Histórias de quem<br>voltou a se mexer</h2>
+      <p class="sec-sub reveal d2">Pacientes da clínica contando, com as próprias palavras, o que sentiam antes e como estão agora.</p>
+    </header>
+  </div>
+
+  <div class="reels-wrap reveal d2">
+    <div class="reels" id="reels" role="list">
+        <button class="reel" data-video="assets/video/depo-andreia.mp4" data-titulo="Andreia" data-sub="Dor na cervical, tórax e ombros" aria-label="Assistir depoimento: Andreia, Dor na cervical, tórax e ombros">
+          <img src="assets/img/poster-andreia.jpg" alt="Andreia, paciente tratada de dor na cervical, tórax e ombros" loading="lazy" width="720" height="1280">
+          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5L8 5.5Z"/></svg></span>
+          <span class="reel-time">1:18</span>
+          <span class="reel-info"><strong>Andreia</strong><em>Dor na cervical, tórax e ombros</em></span>
+        </button>
+        <button class="reel" data-video="assets/video/depo-hernia-l4l5.mp4" data-titulo="Hérnia L4-L5" data-sub="Tratamento em 4 sessões" aria-label="Assistir depoimento: Hérnia L4-L5, Tratamento em 4 sessões">
+          <img src="assets/img/poster-hernia-l4l5.jpg" alt="Paciente tratada de hérnia de disco L4-L5" loading="lazy" width="720" height="1280">
+          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5L8 5.5Z"/></svg></span>
+          <span class="reel-time">0:31</span>
+          <span class="reel-info"><strong>Hérnia L4-L5</strong><em>Tratamento em 4 sessões</em></span>
+        </button>
+        <button class="reel" data-video="assets/video/depo-bursite.mp4" data-titulo="Bursite no quadril" data-sub="Depoimento de paciente" aria-label="Assistir depoimento: Bursite no quadril, Depoimento de paciente">
+          <img src="assets/img/poster-bursite.jpg" alt="Paciente tratada de bursite no quadril" loading="lazy" width="720" height="1280">
+          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5L8 5.5Z"/></svg></span>
+          <span class="reel-time">1:01</span>
+          <span class="reel-info"><strong>Bursite no quadril</strong><em>Depoimento de paciente</em></span>
+        </button>
+        <button class="reel" data-video="assets/video/depo-casal.mp4" data-titulo="Casal atendido" data-sub="Hérnia de disco" aria-label="Assistir depoimento: Casal atendido, Hérnia de disco">
+          <img src="assets/img/poster-casal.jpg" alt="Casal atendido na clínica falando sobre o tratamento de hérnia de disco" loading="lazy" width="720" height="1280">
+          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5L8 5.5Z"/></svg></span>
+          <span class="reel-time">0:31</span>
+          <span class="reel-info"><strong>Casal atendido</strong><em>Hérnia de disco</em></span>
+        </button>
+        <button class="reel" data-video="assets/video/depo-lombar-1.mp4" data-titulo="Dor na lombar" data-sub="Depoimento de paciente" aria-label="Assistir depoimento: Dor na lombar, Depoimento de paciente">
+          <img src="assets/img/poster-lombar-1.jpg" alt="Paciente tratada de dor na lombar" loading="lazy" width="720" height="1280">
+          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5L8 5.5Z"/></svg></span>
+          <span class="reel-time">1:13</span>
+          <span class="reel-info"><strong>Dor na lombar</strong><em>Depoimento de paciente</em></span>
+        </button>
+        <!-- SUBSTITUIR: confirmar nome e queixa desta paciente -->
+        <button class="reel" data-video="assets/video/depo-paciente-1.mp4" data-titulo="Depoimento" data-sub="Paciente da clínica" aria-label="Assistir depoimento: Depoimento, Paciente da clínica">
+          <img src="assets/img/poster-paciente-1.jpg" alt="Paciente da Nina Fisioterapia falando sobre o tratamento" loading="lazy" width="720" height="1280">
+          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5L8 5.5Z"/></svg></span>
+          <span class="reel-time">0:59</span>
+          <span class="reel-info"><strong>Depoimento</strong><em>Paciente da clínica</em></span>
+        </button>
+        <button class="reel" data-video="assets/video/depo-carla.mp4" data-titulo="Carla" data-sub="Depoimento de paciente" aria-label="Assistir depoimento: Carla, Depoimento de paciente">
+          <img src="assets/img/poster-carla.jpg" alt="Carla, paciente da Nina Fisioterapia" loading="lazy" width="720" height="1280">
+          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5L8 5.5Z"/></svg></span>
+          <span class="reel-time">0:54</span>
+          <span class="reel-info"><strong>Carla</strong><em>Depoimento de paciente</em></span>
+        </button>
+        <button class="reel" data-video="assets/video/depo-lombar-2.mp4" data-titulo="Dor na lombar" data-sub="Depoimento de paciente" aria-label="Assistir depoimento: Dor na lombar, Depoimento de paciente">
+          <img src="assets/img/poster-lombar-2.jpg" alt="Paciente tratada de dor na lombar" loading="lazy" width="720" height="1280">
+          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5L8 5.5Z"/></svg></span>
+          <span class="reel-time">0:30</span>
+          <span class="reel-info"><strong>Dor na lombar</strong><em>Depoimento de paciente</em></span>
+        </button>
+        <!-- SUBSTITUIR: confirmar nome e queixa desta paciente -->
+        <button class="reel" data-video="assets/video/depo-paciente-2.mp4" data-titulo="Depoimento" data-sub="Paciente e acompanhante" aria-label="Assistir depoimento: Depoimento, Paciente e acompanhante">
+          <img src="assets/img/poster-paciente-2.jpg" alt="Paciente da Nina Fisioterapia, acompanhada, falando sobre o tratamento" loading="lazy" width="720" height="1280">
+          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5L8 5.5Z"/></svg></span>
+          <span class="reel-time">1:12</span>
+          <span class="reel-info"><strong>Depoimento</strong><em>Paciente e acompanhante</em></span>
+        </button>
     </div>
+  </div>
 
-    <div class="sobre-copy">
-      <p class="eyebrow reveal">Quem cuida de você</p>
-      <h2 class="reveal d1">Dra. Noemi</h2>
-      <p class="reveal d2">
-        À frente da <strong>Nina Fisioterapia</strong>, em Novo Hamburgo, a Dra. Noemi é especialista no
-        tratamento de <strong>hérnia de disco</strong> e nas dores que vêm junto com ela: o ciático que
-        queima, a lombar que trava, a dormência que sobe pelos braços.
-      </p>
-      <p class="reveal d2">
-        O trabalho começa por uma <strong>avaliação minuciosa</strong>, para entender de onde a dor vem, e não
-        apenas onde ela aparece. A partir daí é montado um programa de tratamento individual, combinando
-        terapia manual, quiropraxia, pilates e acupuntura conforme a necessidade de cada corpo.
-        <!-- SUBSTITUIR: incluir formação, CREFITO e anos de experiência da Dra. Noemi -->
-      </p>
-
-      <ul class="check-list reveal d3">
-        <li><svg viewBox="0 0 24 24" class="ic"><path d="m5 13 4 4 10-10"/></svg> Avaliação individual antes de qualquer técnica</li>
-        <li><svg viewBox="0 0 24 24" class="ic"><path d="m5 13 4 4 10-10"/></svg> Tratamento sem cirurgia e sem medicação</li>
-        <li><svg viewBox="0 0 24 24" class="ic"><path d="m5 13 4 4 10-10"/></svg> Programa ajustado a cada retorno</li>
-        <li><svg viewBox="0 0 24 24" class="ic"><path d="m5 13 4 4 10-10"/></svg> Atendimento particular, com tempo e atenção total</li>
-      </ul>
-
-      <div class="stats reveal d4">
-        <div class="stat"><strong data-count="1" data-prefix="" data-suffix="ª">0</strong><span>sessão já traz<br>alívio perceptível</span></div>
-        <div class="stat"><strong data-count="100" data-suffix="%">0</strong><span>do tempo da sessão<br>dedicado a você</span></div>
-      </div>
+  <div class="wrap">
+    <div class="reels-nav">
+      <button class="sl-btn" id="reelPrev" aria-label="Depoimentos anteriores">←</button>
+      <button class="sl-btn" id="reelNext" aria-label="Próximos depoimentos">→</button>
     </div>
   </div>
 </section>
@@ -344,19 +380,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <div class="gal-wrap reveal d2">
-  <div class="gallery" id="galeria">
-    <button class="gal-item" data-src="assets/img/clinica-1.png"><img src="assets/img/clinica-1.png" alt="Sala de atendimento com maca, bola suíça e acessórios" loading="lazy"></button>
-    <button class="gal-item" data-src="assets/img/clinica-2.png"><img src="assets/img/clinica-2.png" alt="Consultório com maca e aparelhos de fisioterapia" loading="lazy"></button>
-    <button class="gal-item" data-src="assets/img/clinica-3.png"><img src="assets/img/clinica-3.png" alt="Estúdio de pilates com cadillac e reformer" loading="lazy"></button>
-    <button class="gal-item" data-src="assets/img/estrutura-recepcao.jpg"><img src="assets/img/estrutura-recepcao.jpg" alt="Recepção da Nina Fisioterapia, com a logo na parede e atendimento no balcão" loading="lazy"></button>
-    <button class="gal-item" data-src="assets/img/estrutura-espera.jpg"><img src="assets/img/estrutura-espera.jpg" alt="Sala de espera com poltronas, televisão, bebedouro e plantas" loading="lazy"></button>
-    <button class="gal-item" data-src="assets/img/estrutura-quiropraxia-1.jpg"><img src="assets/img/estrutura-quiropraxia-1.jpg" alt="Sala de quiropraxia com maca de ajuste, esqueleto anatômico e pranchas da coluna" loading="lazy"></button>
-    <button class="gal-item" data-src="assets/img/estrutura-quiropraxia-2.jpg"><img src="assets/img/estrutura-quiropraxia-2.jpg" alt="Consultório de quiropraxia com maca, pranchas dos nervos espinhais e mesa de avaliação" loading="lazy"></button>
-    <button class="gal-item" data-src="assets/img/estrutura-quiropraxia-3.jpg"><img src="assets/img/estrutura-quiropraxia-3.jpg" alt="Sala de terapia manual com maca de ajuste e ventosas organizadas na parede" loading="lazy"></button>
-    <button class="gal-item" data-src="assets/img/estrutura-pilates-1.jpg"><img src="assets/img/estrutura-pilates-1.jpg" alt="Estúdio de pilates com cadillac, step chair e barrel" loading="lazy"></button>
-    <button class="gal-item" data-src="assets/img/estrutura-pilates-2.jpg"><img src="assets/img/estrutura-pilates-2.jpg" alt="Estúdio de pilates com reformer, cadillac e cadeira de massagem" loading="lazy"></button>
-    <button class="gal-item" data-src="assets/img/estrutura-musculacao-1.jpg"><img src="assets/img/estrutura-musculacao-1.jpg" alt="Sala de exercícios com leg press, cama elástica e simulador de escada" loading="lazy"></button>
-    <button class="gal-item" data-src="assets/img/estrutura-musculacao-3.jpg"><img src="assets/img/estrutura-musculacao-3.jpg" alt="Corredor do estúdio com estação de musculação e barrel de pilates" loading="lazy"></button>
+    <div class="gallery" id="galeria">
+      <button class="gal-item" data-src="assets/img/clinica-1.png"><img src="assets/img/clinica-1.png" alt="Sala de atendimento com maca, bola suíça e acessórios" loading="lazy"></button>
+      <button class="gal-item" data-src="assets/img/clinica-2.png"><img src="assets/img/clinica-2.png" alt="Consultório com maca e aparelhos de fisioterapia" loading="lazy"></button>
+      <button class="gal-item" data-src="assets/img/clinica-3.png"><img src="assets/img/clinica-3.png" alt="Estúdio de pilates com cadillac e reformer" loading="lazy"></button>
+      <button class="gal-item" data-src="assets/img/estrutura-recepcao.jpg"><img src="assets/img/estrutura-recepcao.jpg" alt="Recepção da Nina Fisioterapia, com a logo na parede e atendimento no balcão" loading="lazy"></button>
+      <button class="gal-item" data-src="assets/img/estrutura-espera.jpg"><img src="assets/img/estrutura-espera.jpg" alt="Sala de espera com poltronas, televisão, bebedouro e plantas" loading="lazy"></button>
+      <button class="gal-item" data-src="assets/img/estrutura-quiropraxia-1.jpg"><img src="assets/img/estrutura-quiropraxia-1.jpg" alt="Sala de quiropraxia com maca de ajuste, esqueleto anatômico e pranchas da coluna" loading="lazy"></button>
+      <button class="gal-item" data-src="assets/img/estrutura-quiropraxia-2.jpg"><img src="assets/img/estrutura-quiropraxia-2.jpg" alt="Consultório de quiropraxia com maca, pranchas dos nervos espinhais e mesa de avaliação" loading="lazy"></button>
+      <button class="gal-item" data-src="assets/img/estrutura-quiropraxia-3.jpg"><img src="assets/img/estrutura-quiropraxia-3.jpg" alt="Sala de terapia manual com maca de ajuste e ventosas organizadas na parede" loading="lazy"></button>
+      <button class="gal-item" data-src="assets/img/estrutura-pilates-1.jpg"><img src="assets/img/estrutura-pilates-1.jpg" alt="Estúdio de pilates com cadillac, step chair e barrel" loading="lazy"></button>
+      <button class="gal-item" data-src="assets/img/estrutura-pilates-2.jpg"><img src="assets/img/estrutura-pilates-2.jpg" alt="Estúdio de pilates com reformer, cadillac e cadeira de massagem" loading="lazy"></button>
+      <button class="gal-item" data-src="assets/img/estrutura-musculacao-1.jpg"><img src="assets/img/estrutura-musculacao-1.jpg" alt="Sala de exercícios com leg press, cama elástica e simulador de escada" loading="lazy"></button>
+      <button class="gal-item" data-src="assets/img/estrutura-musculacao-3.jpg"><img src="assets/img/estrutura-musculacao-3.jpg" alt="Corredor do estúdio com estação de musculação e barrel de pilates" loading="lazy"></button>
+    </div>
   </div>
 
   <div class="wrap">
@@ -367,81 +404,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- ══ DEPOIMENTOS ══ -->
-<section class="section depo" id="depoimentos">
-  <div class="wrap">
-    <header class="sec-head sec-head-light">
-      <p class="eyebrow reveal">Depoimentos em vídeo</p>
-      <h2 class="reveal d1">Histórias de quem<br>voltou a se mexer</h2>
-      <p class="sec-sub reveal d2">Pacientes da clínica contando, com as próprias palavras, o que sentiam antes e como estão agora.</p>
-    </header>
-  </div>
-
-  <div class="reels-wrap reveal d2">
-    <div class="reels" id="reels" role="list">
-        <button class="reel" data-video="assets/video/depo-andreia.mp4" data-titulo="Andreia" data-sub="Dor na cervical, tórax e ombros" aria-label="Assistir depoimento: Andreia, Dor na cervical, tórax e ombros">
-          <img src="assets/img/poster-andreia.jpg" alt="Andreia, paciente tratada de dor na cervical, tórax e ombros" loading="lazy" width="720" height="1280">
-          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5L8 5.5Z"/></svg></span>
-          <span class="reel-time">1:18</span>
-          <span class="reel-info"><strong>Andreia</strong><em>Dor na cervical, tórax e ombros</em></span>
-        </button>
-        <button class="reel" data-video="assets/video/depo-hernia-l4l5.mp4" data-titulo="Hérnia L4-L5" data-sub="Tratamento em 4 sessões" aria-label="Assistir depoimento: Hérnia L4-L5, Tratamento em 4 sessões">
-          <img src="assets/img/poster-hernia-l4l5.jpg" alt="Paciente tratada de hérnia de disco L4-L5" loading="lazy" width="720" height="1280">
-          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5L8 5.5Z"/></svg></span>
-          <span class="reel-time">0:31</span>
-          <span class="reel-info"><strong>Hérnia L4-L5</strong><em>Tratamento em 4 sessões</em></span>
-        </button>
-        <button class="reel" data-video="assets/video/depo-bursite.mp4" data-titulo="Bursite no quadril" data-sub="Depoimento de paciente" aria-label="Assistir depoimento: Bursite no quadril, Depoimento de paciente">
-          <img src="assets/img/poster-bursite.jpg" alt="Paciente tratada de bursite no quadril" loading="lazy" width="720" height="1280">
-          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5L8 5.5Z"/></svg></span>
-          <span class="reel-time">1:01</span>
-          <span class="reel-info"><strong>Bursite no quadril</strong><em>Depoimento de paciente</em></span>
-        </button>
-        <button class="reel" data-video="assets/video/depo-casal.mp4" data-titulo="Casal atendido" data-sub="Hérnia de disco" aria-label="Assistir depoimento: Casal atendido, Hérnia de disco">
-          <img src="assets/img/poster-casal.jpg" alt="Casal atendido na clínica falando sobre o tratamento de hérnia de disco" loading="lazy" width="720" height="1280">
-          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5L8 5.5Z"/></svg></span>
-          <span class="reel-time">0:31</span>
-          <span class="reel-info"><strong>Casal atendido</strong><em>Hérnia de disco</em></span>
-        </button>
-        <button class="reel" data-video="assets/video/depo-lombar-1.mp4" data-titulo="Dor na lombar" data-sub="Depoimento de paciente" aria-label="Assistir depoimento: Dor na lombar, Depoimento de paciente">
-          <img src="assets/img/poster-lombar-1.jpg" alt="Paciente tratada de dor na lombar" loading="lazy" width="720" height="1280">
-          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5L8 5.5Z"/></svg></span>
-          <span class="reel-time">1:13</span>
-          <span class="reel-info"><strong>Dor na lombar</strong><em>Depoimento de paciente</em></span>
-        </button>
-        <!-- SUBSTITUIR: confirmar nome e queixa desta paciente -->
-        <button class="reel" data-video="assets/video/depo-paciente-1.mp4" data-titulo="Depoimento" data-sub="Paciente da clínica" aria-label="Assistir depoimento: Depoimento, Paciente da clínica">
-          <img src="assets/img/poster-paciente-1.jpg" alt="Paciente da Nina Fisioterapia falando sobre o tratamento" loading="lazy" width="720" height="1280">
-          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5L8 5.5Z"/></svg></span>
-          <span class="reel-time">0:59</span>
-          <span class="reel-info"><strong>Depoimento</strong><em>Paciente da clínica</em></span>
-        </button>
-        <button class="reel" data-video="assets/video/depo-carla.mp4" data-titulo="Carla" data-sub="Depoimento de paciente" aria-label="Assistir depoimento: Carla, Depoimento de paciente">
-          <img src="assets/img/poster-carla.jpg" alt="Carla, paciente da Nina Fisioterapia" loading="lazy" width="720" height="1280">
-          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5L8 5.5Z"/></svg></span>
-          <span class="reel-time">0:54</span>
-          <span class="reel-info"><strong>Carla</strong><em>Depoimento de paciente</em></span>
-        </button>
-        <button class="reel" data-video="assets/video/depo-lombar-2.mp4" data-titulo="Dor na lombar" data-sub="Depoimento de paciente" aria-label="Assistir depoimento: Dor na lombar, Depoimento de paciente">
-          <img src="assets/img/poster-lombar-2.jpg" alt="Paciente tratada de dor na lombar" loading="lazy" width="720" height="1280">
-          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5L8 5.5Z"/></svg></span>
-          <span class="reel-time">0:30</span>
-          <span class="reel-info"><strong>Dor na lombar</strong><em>Depoimento de paciente</em></span>
-        </button>
-        <!-- SUBSTITUIR: confirmar nome e queixa desta paciente -->
-        <button class="reel" data-video="assets/video/depo-paciente-2.mp4" data-titulo="Depoimento" data-sub="Paciente e acompanhante" aria-label="Assistir depoimento: Depoimento, Paciente e acompanhante">
-          <img src="assets/img/poster-paciente-2.jpg" alt="Paciente da Nina Fisioterapia, acompanhada, falando sobre o tratamento" loading="lazy" width="720" height="1280">
-          <span class="reel-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5L8 5.5Z"/></svg></span>
-          <span class="reel-time">1:12</span>
-          <span class="reel-info"><strong>Depoimento</strong><em>Paciente e acompanhante</em></span>
-        </button>
+<!-- ══ SOBRE ══ -->
+<section class="section sobre" id="sobre">
+  <div class="wrap sobre-in">
+    <div class="sobre-media reveal">
+      <div class="sobre-photo">
+        <img src="assets/img/dra-noemi.png" alt="Dra. Noemi, fisioterapeuta da Nina Fisioterapia, segurando um modelo anatômico da coluna" width="720" height="782">
+      </div>
+      <div class="sobre-stamp">
+        <span class="stamp-num" data-count="7">0</span>
+        <span class="stamp-lbl">tratamentos<br>especializados</span>
+      </div>
     </div>
-  </div>
 
-  <div class="wrap">
-    <div class="reels-nav">
-      <button class="sl-btn" id="reelPrev" aria-label="Depoimentos anteriores">←</button>
-      <button class="sl-btn" id="reelNext" aria-label="Próximos depoimentos">→</button>
+    <div class="sobre-copy">
+      <p class="eyebrow reveal">Quem cuida de você</p>
+      <h2 class="reveal d1">Dra. Noemi</h2>
+      <p class="reveal d2">
+        À frente da <strong>Nina Fisioterapia</strong>, em Novo Hamburgo, a Dra. Noemi é especialista no
+        tratamento de <strong>hérnia de disco</strong> e nas dores que vêm junto com ela: o ciático que
+        queima, a lombar que trava, a dormência que sobe pelos braços.
+      </p>
+      <p class="reveal d2">
+        O trabalho começa por uma <strong>avaliação minuciosa</strong>, para entender de onde a dor vem, e não
+        apenas onde ela aparece. A partir daí é montado um programa de tratamento individual, combinando
+        terapia manual, quiropraxia, pilates e acupuntura conforme a necessidade de cada corpo.
+        <!-- SUBSTITUIR: incluir formação, CREFITO e anos de experiência da Dra. Noemi -->
+      </p>
+
+      <ul class="check-list reveal d3">
+        <li><svg viewBox="0 0 24 24" class="ic"><path d="m5 13 4 4 10-10"/></svg> Avaliação individual antes de qualquer técnica</li>
+        <li><svg viewBox="0 0 24 24" class="ic"><path d="m5 13 4 4 10-10"/></svg> Tratamento sem cirurgia e sem medicação</li>
+        <li><svg viewBox="0 0 24 24" class="ic"><path d="m5 13 4 4 10-10"/></svg> Programa ajustado a cada retorno</li>
+        <li><svg viewBox="0 0 24 24" class="ic"><path d="m5 13 4 4 10-10"/></svg> Atendimento particular, com tempo e atenção total</li>
+      </ul>
+
+      <div class="stats reveal d4">
+        <div class="stat"><strong data-count="1" data-prefix="" data-suffix="ª">0</strong><span>sessão já traz<br>alívio perceptível</span></div>
+        <div class="stat"><strong data-count="100" data-suffix="%">0</strong><span>do tempo da sessão<br>dedicado a você</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -485,15 +486,58 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- ══ CTA FINAL ══ -->
-<section class="cta-final">
-  <div class="wrap cta-in reveal">
-    <h2>A dor não precisa fazer parte<br>da sua rotina.</h2>
-    <p>Agende sua avaliação e descubra o que está por trás dela.</p>
-    <a class="btn btn-gold btn-lg" href="https://wa.me/5551981324435?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" class="ic"><path d="M20 12a8 8 0 0 1-11.9 7L4 20l1.1-4A8 8 0 1 1 20 12Z"/></svg>
-      Falar com a Nina Fisioterapia
-    </a>
+<!-- ══ AGENDE SUA CONSULTA ══ -->
+<section class="section agende" id="agende">
+  <div class="wrap">
+    <header class="sec-head sec-head-light">
+      <p class="eyebrow reveal">Agende sua consulta</p>
+      <h2 class="reveal d1">A gente te espera<br>em Novo Hamburgo</h2>
+      <p class="sec-sub reveal d2">Escolha o caminho mais fácil para você: chame no WhatsApp, ligue direto ou já trace a rota até a clínica.</p>
+    </header>
+
+    <div class="agende-in">
+      <div class="mapa reveal">
+        <iframe
+          src="https://maps.google.com/maps?q=R.%20Cel.%20Jacob%20Kroeff%20Filho%2C%201786%2C%20Rond%C3%B4nia%2C%20Novo%20Hamburgo%20-%20RS%2C%2093415-580&z=16&hl=pt-BR&output=embed"
+          title="Mapa com a localização da Nina Fisioterapia, em Novo Hamburgo"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <div class="agende-info">
+        <div class="info-bloco reveal d1">
+          <h3><svg viewBox="0 0 24 24" class="ic"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg> Onde ficamos</h3>
+          <p>R. Cel. Jacob Kroeff Filho, 1786<br>Bairro Rondônia · Novo Hamburgo/RS<br>CEP 93415-580</p>
+          <a class="btn btn-linha" href="https://www.google.com/maps/dir/?api=1&destination=R.%20Cel.%20Jacob%20Kroeff%20Filho%2C%201786%2C%20Rond%C3%B4nia%2C%20Novo%20Hamburgo%20-%20RS%2C%2093415-580" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" class="ic"><path d="M12 3 21 21l-9-4-9 4Z"/></svg>
+            Traçar rota até a clínica
+          </a>
+        </div>
+
+        <div class="info-bloco reveal d2">
+          <h3><svg viewBox="0 0 24 24" class="ic"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg> Horários de atendimento</h3>
+          <ul class="horarios">
+            <li><span>Segunda a sexta</span><b>08h às 18h</b></li>
+            <li><span>Sábado</span><b>08h às 12h</b></li>
+            <li><span>Domingo</span><b>Fechado</b></li>
+          </ul>
+        </div>
+
+        <div class="info-bloco reveal d3">
+          <h3><svg viewBox="0 0 24 24" class="ic"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 0 0 5.5 5.5L16 13l4 1.5v3a2 2 0 0 1-2.2 2A15.5 15.5 0 0 1 4 6.2 2 2 0 0 1 6.5 4Z"/></svg> Fale com a gente</h3>
+          <a class="telefone" href="tel:+5551981324435">(51) 98132-4435</a>
+          <div class="agende-botoes">
+            <a class="btn btn-gold" href="tel:+5551981324435">
+              <svg viewBox="0 0 24 24" class="ic"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 0 0 5.5 5.5L16 13l4 1.5v3a2 2 0 0 1-2.2 2A15.5 15.5 0 0 1 4 6.2 2 2 0 0 1 6.5 4Z"/></svg>
+              Ligar agora
+            </a>
+            <a class="btn btn-linha" href="https://wa.me/5551981324435?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" class="ic"><path d="M20 12a8 8 0 0 1-11.9 7L4 20l1.1-4A8 8 0 1 1 20 12Z"/></svg>
+              Chamar no WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -536,12 +580,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="foot-col">
       <h4>Navegue</h4>
       <ul>
-        <li><a href="#sobre">Sobre a Dra. Noemi</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
         <li><a href="#tratamentos">Tratamentos</a></li>
         <li><a href="#metodo">Como funciona</a></li>
         <li><a href="#estrutura">Estrutura</a></li>
-        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#sobre">Sobre a Dra. Noemi</a></li>
         <li><a href="#duvidas">Dúvidas frequentes</a></li>
+        <li><a href="#agende">Agende sua consulta</a></li>
       </ul>
     </div>
   </div>
@@ -602,6 +647,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <img id="lbImg" src="" alt="">
 </div>
 
-<script src="script.js?v=11"></script>
+<script src="script.js?v=12"></script>
 </body>
 </html>

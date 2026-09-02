@@ -236,7 +236,7 @@
       trilho: reels,
       seletor: '.reel',
       gap: 18,
-      limpos: 1,
+      limpos: 3,
       prev: document.getElementById('reelPrev'),
       next: document.getElementById('reelNext')
     });

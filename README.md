@@ -100,6 +100,8 @@ porque não há nada escrito na tela nem no nome do arquivo que diga a queixa. P
 - **Conversão**: todos os CTAs levam para o WhatsApp `(51) 98132-4435` com mensagem pré-preenchida, cada botão manda um texto diferente, o que ajuda a saber de qual seção veio o lead.
 - **SEO**: title, description, Open Graph e schema.org `Physiotherapy` já configurados.
 - **Acessibilidade**: navegação por teclado, `skip link`, foco visível, textos alternativos e respeito a `prefers-reduced-motion`.
+- **Ordem das seções**: hero, depoimentos em vídeo, tratamentos, como funciona, a clínica, sobre a Dra. Noemi, dúvidas e agende sua consulta. Os fundos alternam de propósito (verde escuro, creme, areia) para que duas seções vizinhas nunca tenham o mesmo tom.
+- **Agende sua consulta**: mapa do Google embutido, botão de rota (o Google traça do ponto onde a pessoa está até a clínica), horários, telefone clicável e os botões de ligar e de WhatsApp, os dois no mesmo número.
 - **Responsivo**: testado em 360px, 375px, 920px, 1030px, 1100px e 1440px. O menu vira gaveta abaixo de 1025px.
 - **No celular** (abaixo de 620px) o layout muda de propósito: tratamentos, passos do método, galeria, números e rodapé ficam em 2 colunas, e os cards de tratamento aparecem compactos (ícone e título), abrindo o texto ao toque. Os depoimentos seguem em esteira horizontal. No desktop nada disso se aplica: os cards mostram o texto direto e a grade continua em 4 colunas.
 
